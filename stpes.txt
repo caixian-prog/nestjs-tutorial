@@ -1,0 +1,21 @@
+
+1. create a project
+    nest new nestprojectname
+
+2. create items module
+    nest g module items
+    nest g controller items
+    nest g service items
+
+3. implement items service
+
+4. implement items controller
+
+5. validation
+    npm install class-validator class-transformer
+
+6. create DTOs
+
+7. Enable Validation in Main File
+    in main.ts, add this line
+        app.useGlobalPipes(new ValidationPipe())
