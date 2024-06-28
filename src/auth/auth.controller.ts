@@ -4,6 +4,7 @@ import { LocalAuthGuard } from './local-auth.guard';
 import { MyLoggerService } from 'src/logger/logger.service';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { LoginDto } from './dto/login.dto';
+import { Throttle } from '@nestjs/throttler';
 
 @ApiTags('auth')
 @Controller('auth')

@@ -11,7 +11,9 @@ import { ItemsService } from './items.service';
 import { CreateItemDto } from './dto/create-item.dto';
 import { UpdateItemDto } from './dto/update-item.dto';
 import { Item } from './item.entity';
+import { SkipThrottle } from '@nestjs/throttler';
 
+@SkipThrottle() // This route will skip rate limiting.
 @Controller('items')
 export class ItemsController {
   constructor(private readonly itemsService: ItemsService) {}
@@ -26,6 +28,7 @@ export class ItemsController {
     return this.itemsService.findOne(Number(id));
   }
 
+  @SkipThrottle({ default: false }) // Rate limiting is applied to this route.
   @Post()
   create(@Body() createItemDto: CreateItemDto): Promise<Item> {
     return this.itemsService.create(createItemDto);
